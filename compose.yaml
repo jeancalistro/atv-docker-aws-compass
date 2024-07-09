@@ -1,0 +1,17 @@
+name: project-wordpress
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: $HOST_DB
+      WORDPRESS_DB_USER: $USER_DB
+      WORDPRESS_DB_PASSWORD: $PASSWORD_DB
+      WORDPRESS_DB_NAME: $NAME_DB
+    volumes:
+      - wordpress-content:/var/www/html
+volumes:
+  wordpress-content:
+    external: true
